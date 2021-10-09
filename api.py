@@ -1,18 +1,17 @@
 import requests
 import json
-def getTranslation():
+def getTranslation(text):
 
     url = "https://libretranslate.de/translate"
 
     data = {
-        "q": "Hello my name is Kyle! How are you?",
+        "q": "text",
         "source": "en",
         "target": "fr",
     }
 
     r= requests.post(url, data = data)
-    r = r.json()
-    print("English: Hello my name is Kyle! How are you?")
-    print("French: " + r['translatedText'])
+    data = r.json()
+    return data
 
-getTranslation()
+print(getTranslation("Hello!"))

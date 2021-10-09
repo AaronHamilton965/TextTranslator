@@ -1,10 +1,16 @@
-from flask import Flask, render_template
-
+from flask import Flask, render_template, request
+from api import *
 app = Flask(__name__)
 
-@app.route("/")
+@app.route("/" , methods = ['GET' , 'POST'])
 def hello_world():
-    return render_template('index.html')
+    text = ""
+    translatedText = ""
+    if(request.method == 'POST'):
+        text = request.form['textbox']
+        translatedText = getTranslation(text)
+        print(translatedText)
+    return render_template('index.html' , translatedText = translatedText)
 
 if __name__ == "__main__":
     app.run(debug=True)
