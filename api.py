@@ -1,17 +1,15 @@
+import json, sys
 import requests
-import json
 def getTranslation(text):
 
-    url = "https://libretranslate.de/translate"
+    url = "https://translate.astian.org/translate"
 
     data = {
-        "q": "text",
+        "q": text,
         "source": "en",
         "target": "fr",
     }
 
     r= requests.post(url, data = data)
-    data = r.json()
-    return data
-
-print(getTranslation("Hello!"))
+    r = r.json()
+    return r

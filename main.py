@@ -9,8 +9,8 @@ def hello_world():
     if(request.method == 'POST'):
         text = request.form['textbox']
         translatedText = getTranslation(text)
-        print(translatedText)
-    return render_template('index.html' , translatedText = translatedText)
+        translatedText = translatedText['translatedText']
+    return render_template('index.html' , translatedText = translatedText, origianlText = text)
 
 if __name__ == "__main__":
     app.run(debug=True)
