@@ -1,18 +1,18 @@
+import json, sys
 import requests
-import json
-def getTranslation():
 
-    url = "https://libretranslate.de/translate"
+
+# TODO: ReDo function in order to accomdate different Languages
+def getTranslation(text):
+
+    url = "https://translate.astian.org/translate"
 
     data = {
-        "q": "Hello my name is Kyle! How are you?",
+        "q": text,
         "source": "en",
         "target": "fr",
     }
 
     r= requests.post(url, data = data)
     r = r.json()
-    print("English: Hello my name is Kyle! How are you?")
-    print("French: " + r['translatedText'])
-
-getTranslation()
+    return r
